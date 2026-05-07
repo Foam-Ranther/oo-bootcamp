@@ -1,21 +1,27 @@
 package com.tw.bootcamp.problem1;
 
-public class Rectangle implements Shape {
+public class Rectangle {
 
   private final int width;
   private final int length;
 
-  public Rectangle(int width, int length) {
+  private Rectangle(int width, int length) {
     this.width = width;
     this.length = length;
   }
 
-  @Override
+  public static Rectangle createRectangle(int width, int length) {
+    return new Rectangle(width, length);
+  }
+
+  public static Rectangle createSquare(int side) {
+    return new Rectangle(side , side);
+  }
+
   public int area() {
     return width * length;
   }
 
-  @Override
   public int perimeter() {
     return 2 * (width + length);
   }

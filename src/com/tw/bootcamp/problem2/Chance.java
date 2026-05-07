@@ -9,11 +9,11 @@ public class Chance {
     this.chance = value;
   }
 
-  public static Chance createChance(double value) {
+  public static Chance create(double value) {
     return new Chance(value);
   }
 
-  public static Chance createChanceComplement(double value) {
+  public static Chance createComplement(double value) {
     return new Chance(1 - value);
   }
 

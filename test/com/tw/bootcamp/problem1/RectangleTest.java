@@ -3,7 +3,8 @@ package com.tw.bootcamp.problem1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 class RectangleTest {
 
@@ -13,7 +14,6 @@ class RectangleTest {
   void setUp() {
     rectangle = new Rectangle(2, 3);
   }
-
 
   @Test
   void shouldReturnARectangleObject() {

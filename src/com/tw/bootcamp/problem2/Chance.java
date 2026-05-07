@@ -9,14 +9,12 @@ public class Chance {
     this.chance = value;
   }
 
-  public static Chance create(double value) {
+  public static Chance create(double value) throws Throwable {
+    if (value < 0) {
+      throw new Throwable("invalid chance value");
+    }
     return new Chance(value);
   }
-
-  public static Chance createComplement(double value) {
-    return new Chance(1 - value);
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -25,8 +23,7 @@ public class Chance {
     return Objects.equals(chance, chance1.chance);
   }
 
-  @Override
-  public int hashCode() {
-    return Objects.hashCode(chance);
+  public double complement() {
+    return 1 - chance;
   }
 }

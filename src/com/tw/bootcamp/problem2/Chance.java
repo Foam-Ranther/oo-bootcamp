@@ -23,7 +23,16 @@ public class Chance {
     return Objects.equals(chance, chance1.chance);
   }
 
-  public double complement() {
+  public double not() {
     return 1 - chance;
+  }
+
+  public double and(Chance o) {
+    return this.chance * o.chance;
+  }
+
+
+  public double or(Chance o) {
+    return (this.chance + o.chance) - this.and(o);
   }
 }

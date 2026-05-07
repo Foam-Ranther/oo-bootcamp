@@ -15,7 +15,7 @@ class ChanceTest {
   @Test
   void shouldRepresentChanceOfNotGettingTails() throws Throwable {
     Chance chanceOfTails = Chance.create(0.5);
-    assertEquals(0.5, chanceOfTails.complement());
+    assertEquals(0.5, chanceOfTails.not());
   }
 
   @Test
@@ -27,5 +27,20 @@ class ChanceTest {
   @Test
   void shouldThrowErrorIfChanceIsBelowZero() {
     assertThrows(Throwable.class, () -> Chance.create(-2));
+  }
+
+  @Test
+  void shouldReturnChanceOfGettingTailsOn2Coins() throws Throwable {
+    Chance chanceOfGettingTail = Chance.create(0.5);
+
+    assertEquals(0.25, chanceOfGettingTail.and(chanceOfGettingTail));
+  }
+
+  @Test
+  void shouldReturnChanceOfGettingAtLeastOneTailsOn2Coins() throws Throwable {
+    Chance chanceOfGettingTail = Chance.create(0.5);
+    Chance chanceOfNotGettingTail = Chance.create(chanceOfGettingTail.not());
+
+    assertEquals(0.75, chanceOfNotGettingTail.or(chanceOfGettingTail));
   }
 }

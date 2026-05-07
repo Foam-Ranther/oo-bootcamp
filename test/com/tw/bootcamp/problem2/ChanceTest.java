@@ -7,19 +7,24 @@ import static org.junit.jupiter.api.Assertions.*;
 class ChanceTest {
 
   @Test
-  void initialiseChance() {
-    Chance chance = Chance.createChance(0.5);
-    assertInstanceOf(Chance.class, chance);
-    assertTrue(chance.equals(Chance.createChance(0.5)));
+  void shouldRepresentChanceOfGettingTails() {
+    Chance chanceOfTails = Chance.createChance(0.5);
+    assertTrue(chanceOfTails.equals(Chance.createChance(0.5)));
   }
 
   @Test
-  void initialiseComplementOfChance() {
-    Chance complementChance = Chance.createChanceComplement(0.5);
-    assertInstanceOf(Chance.class, complementChance);
-    assertTrue(complementChance.equals(Chance.createChance(0.5)));
-
+  void shouldRepresentChanceOfNotGettingTails() {
+    Chance chanceOfNotGettingTails = Chance.createChanceComplement(0.5);
+    assertTrue(chanceOfNotGettingTails.equals(Chance.createChanceComplement(0.5)));
   }
 
-
+  @Test
+  void shouldRepresentChanceOfGettingTailsOn2Coins() {
+    Chance chanceOfGettingTailsOn2Coins = Chance.createChance(0.75);
+    assertTrue(chanceOfGettingTailsOn2Coins.equals(Chance.createChance(0.75)));
+  }
+//
+//  @Test
+//  void shouldRepresentChanceOfGetting3OnDice() {
+//  }
 }

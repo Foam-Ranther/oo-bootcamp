@@ -3,15 +3,18 @@ package com.tw.bootcamp.problem1;
 public class Rectangle {
 
   private final int width;
-  private final int height;
+  private final int length;
 
-  public Rectangle(int width, int height) {
+  public Rectangle(int width, int length) {
     this.width = width;
-    this.height = height;
+    this.length = length;
   }
 
-
   public int area() {
-    return width * height;
+    return width * length;
+  }
+
+  public int perimeter() {
+    return 2 * (width + length);
   }
 }

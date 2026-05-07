@@ -42,4 +42,10 @@ class RectangleTest {
     Rectangle square = Rectangle.createSquare(5);
     assertEquals(20, square.perimeter());
   }
+
+  @Test
+  void shouldCalculateAreaOfSquareHavingSideAsDouble() {
+    Rectangle square = Rectangle.createSquare(2.2);
+    assertEquals(4.84, square.area(), 0.1);
+  }
 }

@@ -7,13 +7,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class ChanceTest {
 
   @Test
-  void shouldReturnProbabilityOfTails() {
-    assertEquals(0.5, Chance.gettingOutcome(1, 2));
+  void initialiseChance() {
+    Chance chance = Chance.createChance(0.5);
+    assertInstanceOf(Chance.class, chance);
+    assertTrue(chance.equals(Chance.createChance(0.5)));
   }
 
   @Test
-  void shouldReturnProbabilityOfNotGettingTails() {
-    assertEquals(0.5, Chance.gettingOutcome(1, 2));
+  void initialiseComplementOfChance() {
+    Chance complementChance = Chance.createChanceComplement(0.5);
+    assertInstanceOf(Chance.class, complementChance);
+    assertTrue(complementChance.equals(Chance.createChance(0.5)));
+
   }
 
 

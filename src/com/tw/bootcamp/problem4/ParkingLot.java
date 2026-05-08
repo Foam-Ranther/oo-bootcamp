@@ -1,5 +1,8 @@
 package com.tw.bootcamp.problem4;
 
+import com.tw.bootcamp.problem4.errors.InvalidParkingLotSize;
+import com.tw.bootcamp.problem4.errors.ParkingLotFullException;
+
 import java.util.Objects;
 
 public class ParkingLot {
@@ -8,11 +11,17 @@ public class ParkingLot {
     capacity = size;
   }
 
-  public static ParkingLot createParkingLot(int size) {
+  public static ParkingLot createParkingLot(int size) throws InvalidParkingLotSize {
+    if (size < 0) {
+      throw new InvalidParkingLotSize("Parking lot size cannot be negative");
+    }
     return new ParkingLot(size);
   }
 
-  public void park() {
+  public void park() throws ParkingLotFullException {
+    if(capacity <= 0) {
+      throw new ParkingLotFullException("Parking lot is full");
+    }
     capacity = capacity -1;
   }
 

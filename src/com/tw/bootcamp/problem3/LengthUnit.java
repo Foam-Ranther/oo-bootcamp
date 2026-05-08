@@ -16,4 +16,8 @@ public enum LengthUnit implements Unit {
   public double inStandard(double measurement) {
     return measurement * milliMeters;
   }
+
+  public double covertToUnit(double measurement, LengthUnit unitToConvert) {
+    return inStandard(measurement)/unitToConvert.milliMeters;
+  }
 }

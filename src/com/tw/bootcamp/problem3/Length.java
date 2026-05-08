@@ -7,7 +7,7 @@ public class Length {
   private final double measurement;
   private final LengthUnit unit;
 
-  private Length(double measurement, LengthUnit unit) {
+  private Length(double measurement,LengthUnit  unit) {
     this.measurement = measurement;
     this.unit = unit;
   }
@@ -22,7 +22,9 @@ public class Length {
   }
 
   public Length add(Length o) {
-    return new Length(measurement + o.measurement, unit);
+    double len1 = o.unit.covertToUnit(o.measurement, LengthUnit.INCH);
+    double len2 = unit.covertToUnit(measurement, LengthUnit.INCH);
+    return new Length(len1 + len2, LengthUnit.INCH);
   }
 
   @Override

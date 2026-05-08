@@ -43,4 +43,12 @@ class LengthTest {
     Length fourInch = Length.create(4, LengthUnit.INCH);
     assertEquals(fourInch, twoInch.add(twoInch));
   }
+
+  @Test
+  void shouldAddTwoLengthOfDifferentUnit() throws InvalidMeasurementException {
+    Length twoInch = Length.create(2, LengthUnit.INCH);
+    Length twoCentimeter = Length.create(2.5, LengthUnit.CM);
+    Length threeInch = Length.create(3, LengthUnit.INCH);
+    assertEquals(threeInch, twoInch.add(twoCentimeter));
+  }
 }

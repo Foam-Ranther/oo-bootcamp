@@ -23,4 +23,13 @@ class LengthTest {
     Length fiveCentimeter = new Length(5, Unit.CM);
     assertTrue(twoInch.isEquals(fiveCentimeter));
   }
+
+  @Test
+  void shouldReturnTrueIfOneCentimeterEqualToTenMilliMeter() {
+    Length oneCentimeter = new Length(1, Unit.CM);
+    Length tenMilliMeter = new Length(10, Unit.MM);
+
+    assertTrue(oneCentimeter.isEquals(tenMilliMeter));
+
+  }
 }

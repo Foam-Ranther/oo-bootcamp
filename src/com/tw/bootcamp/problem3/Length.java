@@ -1,5 +1,7 @@
 package com.tw.bootcamp.problem3;
 
+import java.util.Objects;
+
 public class Length {
 
   private final double measurement;
@@ -17,5 +19,21 @@ public class Length {
 
   public boolean isEquals(Length o) {
    return  unit.inStandard(measurement) == o.unit.inStandard(o.measurement);
+  }
+
+  public Length add(Length o) {
+    return new Length(measurement + o.measurement, unit);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+    Length length = (Length) o;
+    return Double.compare(measurement, length.measurement) == 0 && unit == length.unit;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(measurement, unit);
   }
 }

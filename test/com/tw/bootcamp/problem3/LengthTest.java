@@ -11,6 +11,11 @@ class LengthTest {
   }
 
   @Test
+  void shouldThrowErrorForInvalidMeasurement() {
+    assertThrows(InvalidMeasurementException.class, () -> Length.create(-1, LengthUnit.INCH));
+  }
+
+  @Test
   void shouldReturnTrueIfOneFeetEqualToTwelveInch() throws InvalidMeasurementException {
     Length oneFeet = Length.create(1, LengthUnit.FEET);
     Length twelveInch = Length.create(12, LengthUnit.INCH);
@@ -30,5 +35,12 @@ class LengthTest {
     Length tenMilliMeter = Length.create(10, LengthUnit.MM);
 
     assertTrue(oneCentimeter.isEquals(tenMilliMeter));
+  }
+
+  @Test
+  void shouldAddTwoLengthsOfSameUnit() throws InvalidMeasurementException {
+    Length twoInch = Length.create(2, LengthUnit.INCH);
+    Length fourInch = Length.create(4, LengthUnit.INCH);
+    assertEquals(fourInch, twoInch.add(twoInch));
   }
 }

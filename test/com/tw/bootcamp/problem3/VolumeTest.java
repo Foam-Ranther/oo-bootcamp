@@ -12,4 +12,9 @@ class VolumeTest {
     Volume threeLitres = Volume.create(3.78, VolumeUnit.LITER);
     assertTrue(oneGallon.isEquals(threeLitres));
   }
+
+  @Test
+  void shouldThrowErrorForInvalidMeasurement() {
+    assertThrows(InvalidMeasurementException.class,() -> Volume.create(-1, VolumeUnit.GALLON));
+  }
 }

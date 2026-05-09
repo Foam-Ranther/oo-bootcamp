@@ -1,22 +1,24 @@
 package com.tw.bootcamp.problem5;
 
+import com.tw.bootcamp.problem5.constraints.Rule;
+import com.tw.bootcamp.problem5.errors.CannotAddBallException;
+
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Rulebook {
-  public Rulebook() {
+  private final HashMap<Ball, Rule> rules;
 
+  public Rulebook(HashMap<Ball, Rule> rules) {
+    this.rules = rules;
   }
 
   public boolean canAdd(List<Ball> balls, Ball ball) throws CannotAddBallException {
-    switch (ball) {
-      case Ball.GREEN:
-        return canAddGreenBall(balls);
-      case Ball.RED:
-        return canAddRedBall(balls);
-      default:
-        return true;
+    if (rules.containsKey(ball)){
+    return rules.get(ball).apply(balls);
     }
+    return true;
   }
 
   private boolean canAddRedBall(List<Ball> balls) throws CannotAddBallException {
@@ -24,17 +26,6 @@ public class Rulebook {
       throw new CannotAddBallException("ratio of green to red ball is off");
     }
     return true;
-  }
-
-  private boolean canAddGreenBall(List<Ball> balls) throws CannotAddBallException {
-    if( hasAtMostThreeGreenBalls(balls)) {
-      throw new CannotAddBallException("At least three green balls are allowed");
-    }
-    return true;
-  }
-
-  private boolean hasAtMostThreeGreenBalls(List<Ball> balls) {
-    return Collections.frequency(balls, Ball.GREEN) == 3;
   }
 
 }

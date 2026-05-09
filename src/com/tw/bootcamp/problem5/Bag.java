@@ -1,33 +1,33 @@
 package com.tw.bootcamp.problem5;
 
+import com.tw.bootcamp.problem5.errors.CannotAddBallException;
+import com.tw.bootcamp.problem5.errors.NoSpaceLeftException;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public class Bag {
   private final int capacity;
+  private final Rulebook rulebook;
   private List<Ball> balls;
 
-  public Bag(int maxCapacity) {
+  public Bag(int maxCapacity, Rulebook rulebook) {
     capacity = maxCapacity;
+    this.rulebook = rulebook;
     balls = new ArrayList<>(12);
   }
 
-  public int add(Ball ball) throws NoSpaceLeftException, MaxedQuantitiyReachedException {
+  public int add(Ball ball) throws NoSpaceLeftException, CannotAddBallException {
     if (balls.size() == capacity) {
       throw new NoSpaceLeftException("Bag is Full");
     }
-    if(hasAtMostThreeGreenBalls()) {
-      throw new MaxedQuantitiyReachedException("At least three ball are allowed");
-    };
-    balls.add(ball);
+    if (rulebook.canAdd(balls, ball)) {
+      balls.add(ball);
+    }
     return balls.size();
   }
 
-  private boolean hasAtMostThreeGreenBalls() {
-    return Collections.frequency(balls, Ball.GREEN) == 3;
-  }
 
   @Override
   public boolean equals(Object o) {

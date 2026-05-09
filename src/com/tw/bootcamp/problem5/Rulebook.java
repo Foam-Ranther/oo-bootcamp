@@ -21,11 +21,4 @@ public class Rulebook {
     return true;
   }
 
-  private boolean canAddRedBall(List<Ball> balls) throws CannotAddBallException {
-    if(2 * Collections.frequency(balls, Ball.RED) >= Collections.frequency(balls, Ball.GREEN)){
-      throw new CannotAddBallException("ratio of green to red ball is off");
-    }
-    return true;
-  }
-
 }

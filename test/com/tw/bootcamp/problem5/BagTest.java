@@ -9,13 +9,13 @@ class BagTest {
   @Test
   void shouldAddABallToBag() throws NoSpaceLeftException {
     Bag bag = new Bag(12);
-    int noOfBallsInBag = bag.add();
+    int noOfBallsInBag = bag.add(new Ball(Color.BLUE));
     assertEquals(1, noOfBallsInBag);
   }
 
   @Test
   void shouldThrowExceptionWhenBagIsFull() {
     Bag bag = new Bag(0);
-    assertThrows(NoSpaceLeftException.class, bag::add);
+    assertThrows(NoSpaceLeftException.class, () -> bag.add(new Ball(Color.BLUE)));
   }
 }

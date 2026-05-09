@@ -11,7 +11,9 @@ public class Bag {
     noOfBalls = 0;
   }
 
-  public int add() throws NoSpaceLeftException {
+
+
+  public int add(Ball ball) throws NoSpaceLeftException {
     if (noOfBalls == capacity) {
       throw new NoSpaceLeftException("Bag is Full");
     }

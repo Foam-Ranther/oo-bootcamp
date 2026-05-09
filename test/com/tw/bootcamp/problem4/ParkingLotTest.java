@@ -4,6 +4,7 @@ import com.tw.bootcamp.problem4.errors.ParkingLotFullException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class ParkingLotTest {
   @Test
@@ -35,5 +36,14 @@ class ParkingLotTest {
   void shouldNotBeAbleToParkTheCarWhenParkingLotIsFull() throws InvalidParkingLotSize {
     ParkingLot parkingLot = ParkingLot.createParkingLot(0);
     assertThrows(ParkingLotFullException.class, parkingLot::park);
+  }
+
+  @Test
+  void shouldNotifySubscriberWhenUpdatingParkingLot() throws InvalidParkingLotSize, ParkingLotFullException {
+    ParkingLot parkingLot = ParkingLot.createParkingLot(10);
+    Subscriber mockAssistant = mock(Subscriber.class);
+    parkingLot.subscribe(mockAssistant);
+    parkingLot.park();
+    verify(mockAssistant, times(1)).onPark(9);
   }
 }

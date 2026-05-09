@@ -19,7 +19,7 @@ public class ParkingLot {
   }
 
   public void park() throws ParkingLotFullException {
-    if(capacity <= 0) {
+    if(isFull()) {
       throw new ParkingLotFullException("Parking lot is full");
     }
     capacity = capacity -1;
@@ -38,6 +38,6 @@ public class ParkingLot {
   }
 
   public boolean isFull() {
-    return capacity == 0;
+    return capacity <= 0;
   }
 }
